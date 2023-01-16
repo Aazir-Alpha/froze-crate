@@ -1,16 +1,21 @@
+
+
 import tkinter as tk
 from tkinter import filedialog
 import urllib.request
 from tqdm import tqdm
 
+
 def download_file():
     url = entry_url.get()
-    local_filename = filedialog.asksaveasfilename(initialdir = "/", title = "Select file",filetypes = (("all files","*.*"), ("jpeg files","*.jpg")))
+    local_filename = filedialog.asksaveasfilename(
+        initialdir="/", title="Select file", filetypes=(("all files", "*.*"), ("jpeg files", "*.jpg")))
     try:
         with urllib.request.urlopen(url) as url:
             total_size = int(url.headers.get("Content-Length", 0))
             block_size = 1024
-            progress = tqdm(total=total_size, unit='B', unit_scale=True, desc=local_filename, leave=False)
+            progress = tqdm(total=total_size, unit='B',
+                            unit_scale=True, desc=local_filename, leave=False)
             with open(local_filename, "wb") as f:
                 while True:
                     buffer = url.read(block_size)
@@ -23,8 +28,10 @@ def download_file():
     except Exception as e:
         label_status.config(text=str(e))
 
+
 def toggle_fullscreen(event=None):
     root.attributes("-fullscreen", not root.attributes("-fullscreen"))
+
 
 root = tk.Tk()
 root.title("File Downloader")
@@ -49,7 +56,8 @@ entry_url = tk.Entry(frame_url)
 entry_url.grid(row=0, column=1, padx=5, pady=5)
 
 # Create widgets for the "Download" section
-button_download = tk.Button(frame_download, text="Download", command=download_file)
+button_download = tk.Button(
+    frame_download, text="Download", command=download_file)
 button_download.grid(row=0, column=0, padx=5, pady=5)
 
 # Create widgets for the "Status" section
