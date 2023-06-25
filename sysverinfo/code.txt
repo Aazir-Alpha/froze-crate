@@ -1,0 +1,51 @@
+import subprocess
+
+def uninstall_program_windows(program_name):
+    subprocess.call(['pip', 'uninstall', program_name])
+
+# Example usage
+uninstall_program_windows('numpy')
+
+
+import subprocess
+
+def install_program_windows(program_name):
+    subprocess.call(['pip', 'install', program_name])
+
+# Example usage
+install_program_windows('numpy')
+
+
+
+import subprocess
+
+def upgrade_program_windows(program_name):
+    subprocess.call(['pip', 'install', '--upgrade', program_name])
+
+# Example usage
+upgrade_program_windows('numpy')
+
+
+
+import requests
+
+def download_software(url, save_path):
+    response = requests.get(url, stream=True)
+    if response.status_code == 200:
+        with open(save_path, 'wb') as file:
+            for chunk in response.iter_content(chunk_size=1024):
+                file.write(chunk)
+        print(f"Software downloaded successfully to: {save_path}")
+    else:
+        print("Failed to download software.")
+
+# Example usage
+software_url = 'https://example.com/software.zip'
+save_path = 'path/to/save/software.zip'
+download_software(software_url, save_path)
+
+https://frozecrate.000webhostapp.com/app_version/appver.xlsx
+https://frozecrate.000webhostapp.com/app_version/check_test/
+https://frozecrate.000webhostapp.com/app_version/check_test/check1.xlsx
+https://frozecrate.000webhostapp.com/tutorial.html
+
